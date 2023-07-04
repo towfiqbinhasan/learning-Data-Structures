@@ -1,33 +1,42 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-int main()
-{
-    int n;
-    cout<<"Enter the size of this array: "<<endl;
-    cin>>n;
-    int a[n];
-    cout<<"Enter the elements of this array: "<<endl;
-    for(int i=0;i<n;i++)
-    {
-        cin>>a[n];
-    }
-    for(int i=1;i<n;i++)
-    {
-        int current = a[i];
-        int j=i-1;
-        while(a[j]>current && j>=0)
-        {
-            a[j+1]=a[j];
-            j--;
+
+void insertionSort(int arr[], int size) {
+    for (int i = 1; i < size; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
         }
-        a[j+1]=current;
+
+        arr[j + 1] = key;
     }
-    cout<<"The insertion array is: "<<endl;
-    for(int i=0;i<n;i++)
-    {
-        cout<<a[i]<<endl;
+}
+
+int main() {
+    int size;
+    cout << "Enter the number of elements: "<<endl;
+    cin >> size;
+
+    int arr[size];
+    cout << "Enter the elements:" <<endl;
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
     }
-     cout<<endl;
+
+    cout << "Original array: ";
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+
+    insertionSort(arr, size);
+
+    cout << "\nSorted array: ";
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }
