@@ -1,9 +1,7 @@
 #include<iostream>
 using namespace std;
-
-
 class queue{
-int n;
+int n = 100;
 int *arr;
 int front;
 int back;
@@ -31,7 +29,7 @@ public:
               }
           }
 void pop(){
-if(front == 0 ||front>back)
+if(front == -1 || front>back)
 {
     cout<<"No elements it's here"<<endl;
     return;
@@ -39,28 +37,24 @@ if(front == 0 ||front>back)
 
     front ++;
 }
-void peek()
+int peek()
 {
-    if(front==0||front >back)
+    if(front==-1||front >back)
     {
         cout<<"No elements in queue"<<endl;
-        return ;
+        return -1;
     }
-    return;
+    return arr[front];
 }
 bool empty()
 {
 
-    if(front ==0||front>back)
+    if(front ==-1||front>back)
     {
         return true;
     }
     return false;
 }
-
-
-
-
 };
 int main()
 {
@@ -69,10 +63,13 @@ int main()
     q.push(2);
     q.push(3);
     q.push(4);
-    //cout<<pop().p<<endl;
-
-
-
-
+    cout<<q.peek()<<endl;
+    q.pop();
+    cout<<q.peek()<<endl;
+    q.pop();
+    cout<<q.peek()<<endl;
+    q.pop();
+    cout<<q.peek()<<endl;
+    q.pop();
     return 0;
 }
